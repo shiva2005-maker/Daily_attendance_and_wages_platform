@@ -1,148 +1,115 @@
-# 🏗️ Daily Wage Labour Attendance & Payment Platform
+# Daily Attendance and Wages Platform
 
-A full-stack MERN web application designed to simplify workforce management for construction contractors by digitizing worker attendance, wage calculation, payment tracking, and reporting.
+A full-stack web application for managing contractor accounts, workers, work sites, daily attendance, wages, and payments. Administrators can review platform-wide records and view dashboard statistics.
 
-The platform helps contractors maintain transparent and organized records of workers, attendance, earnings, and payments while providing administrators with centralized management capabilities.
+## Features
 
----
+- Contractor registration and login
+- Worker and work-site management
+- Daily attendance tracking
+- Wage calculations and payment records
+- Reports and contractor dashboard
+- Admin dashboard for managing contractors, workers, sites, and payments
+- Cookie-based authentication with role-protected admin pages
 
-## 🚀 Live Project
+## Tech stack
 
-### Frontend
-[https://your-frontend-url.vercel.app](https://daily-attendance-and-wages-platform-8ah7u94l5.vercel.app/)
+- **Frontend:** React, Vite, React Router, Tailwind CSS, Recharts
+- **Backend:** Node.js, Express
+- **Database:** MongoDB with Mongoose
 
-### Backend API
-[https://daily-attendance-and-wages-platform.onrender.com](https://daily-attendance-and-wages-platform.onrender.com)
+## Requirements
 
+- Node.js and npm
+- MongoDB running locally or a MongoDB Atlas connection string
 
----
+## Run locally
 
-## 📌 Problem Statement
+### 1. Configure the backend
 
-Construction contractors often manage daily labour attendance and wage payments manually using notebooks, spreadsheets, or informal records.
+In a terminal, go to the backend directory and install dependencies:
 
-This can lead to:
+```bash
+cd Backend
+npm install
+```
 
-- Incorrect attendance records
-- Wage calculation errors
-- Difficulty tracking pending payments
-- Loss of historical records
-- Lack of transparency
-- Difficulty generating reports
-- Time-consuming workforce management
+Create `Backend/.env` with the following settings. Replace `MONGO_URI` with your MongoDB connection string and set a private `JWT_KEY`.
 
-This project provides a centralized digital platform to solve these problems.
+```dotenv
+PORT=5000
+CLIENT_URL=http://localhost:5173
+MONGO_URI=mongodb://127.0.0.1:27017/daily-wages-platform
+JWT_KEY=replace-this-with-a-long-random-secret
+ADMIN_NAME=Admin
+ADMIN_EMAIL=admin@gmail.com
+ADMIN_PASSWORD=admin@123
+```
 
----
+Create the admin account once the database is available:
 
-## 💡 Solution
+```bash
+npm run create-admin
+```
 
-The Daily Wage Labour Attendance & Payment Platform provides:
+The script stores a hashed password in the database. It fails if an account with the configured admin email already exists.
 
-- 👤 Contractor authentication
-- 👷 Worker management
-- 🏗️ Construction site management
-- 📅 Daily attendance tracking
-- 💰 Automatic wage calculation
-- 💳 Payment management
-- 📊 Reports and financial summaries
-- 🛡️ Admin management
-- 🔐 Role-based authorization
-- 📱 Responsive user interface
+### 2. Start the backend
 
----
+From `Backend`, run:
 
-# ✨ Features
+```bash
+node index.js
+```
 
-## 👤 Authentication
+The API uses port `5000` by default.
 
-- Contractor registration
-- Contractor login
-- Secure password hashing
-- JWT-based authentication
-- HTTP-only authentication cookies
-- Logout functionality
-- Session validation
-- Role-based authorization
+### 3. Configure and start the frontend
 
----
+Open a second terminal, then run:
 
-## 🏗️ Site Management
+```bash
+cd Frontend
+npm install
+```
 
-Contractors can:
+Create `Frontend/.env` with:
 
-- Create construction sites
-- View site details
-- Update site information
-- Delete sites
-- Track site status
+```dotenv
+VITE_API_URL=http://localhost:5000/
+```
 
-### Site Status
+Start the frontend:
 
-- Active
-- Completed
-- On Hold
+```bash
+npm run dev
+```
 
-A site with active workers cannot be deleted.
+Open the local URL printed by Vite (usually `http://localhost:5173`).
 
----
+## Admin login
 
-## 👷 Worker Management
-
-Contractors can:
-
-- Add workers
-- Assign workers to sites
-- Edit worker details
-- Set daily wages
-- View worker information
-- Deactivate workers
-- Manage worker roles
-
-Example worker roles:
-
-- Labourer
-- Mason
-- Carpenter
-- Electrician
-- Plumber
-- Other
-
----
-
-## 📅 Attendance Management
-
-Contractors can record daily attendance for workers.
-
-### Attendance Types
-
-| Status | Wage |
-|--------|------|
-| Present | 100% |
-| Half-Day | 50% |
-| Absent | 0% |
-
-### Attendance Features
-
-- Select construction site
-- Select date
-- View workers assigned to site
-- Mark Present / Half-Day / Absent
-- Load previously saved attendance
-- Update existing attendance
-- Prevent duplicate attendance
-- Prevent future-date attendance
-- Validate worker-site relationship
-
----
-
-## 💰 Wage Management
-
-The system automatically calculates worker earnings based on attendance.
-
-### Example
-
-If a worker earns:
+Use these credentials on the login page after creating the admin account:
 
 ```text
-Daily Wage = ₹800
+Email:    admin@gmail.com
+Password: admin@123
+```
+
+These are development/demo credentials. Change the password and use a unique admin email before deploying or exposing the application publicly. Never commit real `.env` files, database credentials, or production secrets to GitHub.
+
+## API routes
+
+| Area | Base route |
+| --- | --- |
+| Authentication | `/auth` |
+| Sites | `/sites` |
+| Workers | `/workers` |
+| Attendance | `/attendance` |
+| Wages | `/wages` |
+| Payments | `/payments` |
+| Dashboard | `/dashboard` |
+| Admin | `/admin` |
+| Reports | `/reports` |
+
+The backend root route (`/`) returns a simple API welcome message.
