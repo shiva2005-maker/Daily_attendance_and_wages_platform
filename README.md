@@ -20,6 +20,109 @@ A full-stack web application for managing contractor accounts, workers, work sit
 - Reports and contractor dashboard
 - Admin dashboard for managing contractors, workers, sites, and payments
 - Cookie-based authentication with role-protected admin pages
+  ## 👤 Authentication & Authorization
+
+- Contractor registration
+- Contractor login
+- Admin login
+- Secure password hashing
+- JWT-based authentication
+- HTTP-only cookies
+- Logout functionality
+- Session authentication
+- Role-based authorization
+- Protected routes
+
+---
+
+## 🏗️ Site Management
+
+Contractors can manage their construction sites.
+
+### Features
+
+- Create construction sites
+- View site details
+- Update site information
+- Delete sites
+- Assign workers to sites
+- Track site status
+
+### Site Status
+
+- Active
+- Completed
+- On Hold
+
+The application prevents deletion of sites that still contain active workers.
+
+---
+
+## 👷 Worker Management
+
+Contractors can manage workers assigned to construction sites.
+
+### Features
+
+- Add workers
+- View workers
+- Edit worker details
+- Assign workers to sites
+- Set daily wages
+- Track worker roles
+- Deactivate workers
+- View worker information
+
+### Worker Information
+
+- Name
+- Phone number
+- Role
+- Daily wage
+- Joining date
+- Assigned site
+- Worker status
+
+---
+
+## 📅 Attendance Management
+
+The attendance module allows contractors to record and manage daily worker attendance.
+
+### Attendance Types
+
+| Status | Wage Calculation |
+|--------|------------------|
+| Present | 100% of daily wage |
+| Half-Day | 50% of daily wage |
+| Absent | 0% of daily wage |
+
+### Features
+
+- Select construction site
+- Select attendance date
+- View workers assigned to the selected site
+- Mark Present
+- Mark Half-Day
+- Mark Absent
+- Load previously saved attendance
+- Update existing attendance
+- Prevent duplicate attendance
+- Prevent future-date attendance
+- Validate worker-site relationship
+
+---
+
+## 💰 Wage Management
+
+The system automatically calculates worker earnings based on attendance.
+
+### Example
+
+If a worker's daily wage is:
+
+```text
+total wages ₹800
 
 ## Tech stack
 
