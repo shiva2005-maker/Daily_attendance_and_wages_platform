@@ -2,6 +2,15 @@
 
 A full-stack web application for managing contractor accounts, workers, work sites, daily attendance, wages, and payments. Administrators can review platform-wide records and view dashboard statistics.
 
+## 🚀 Live Project
+
+### Frontend
+[https://your-frontend-url.vercel.app](https://daily-attendance-and-wages-platform-8ah7u94l5.vercel.app/)
+
+### Backend API
+[https://your-backend-url.onrender.com](https://daily-attendance-and-wages-platform.onrender.com)
+
+
 ## Features
 
 - Contractor registration and login
